@@ -28,17 +28,17 @@ body{
 /* ===== ESTRELLAS ===== */
 .stars span{
   position:fixed;
-  width:5px;
-  height:5px;
+  width:4px;
+  height:4px;
   background:rgba(255,255,255,.8);
   border-radius:50%;
-  animation:stars 20s linear infinite;
+  animation:stars 22s linear infinite;
 }
 
 /* ===== APP ===== */
 .app{
   min-height:100vh;
-  padding:40px 20px 120px;
+  padding:40px 20px 100px;
   text-align:center;
   position:relative;
   z-index:2;
@@ -47,18 +47,19 @@ body{
 /* ===== EMOJIS ===== */
 .character{
   position:absolute;
-  font-size:46px;
-  animation:float 4s ease-in-out infinite;
+  font-size:44px;
+  animation:float 4.5s ease-in-out infinite;
+  opacity:.9;
 }
 .fairy{ top:10%; left:6%; }
-.bear{ bottom:22%; left:6%; animation-delay:1s; }
+.bear{ bottom:20%; left:6%; animation-delay:1s; }
 .unicorn{ top:12%; right:6%; animation-delay:2s; }
 
 /* ===== TITULO ===== */
 .title{
   font-family:'Pacifico',cursive;
   font-size:2.6rem;
-  min-height:60px;
+  min-height:64px;
 }
 .title span{
   opacity:0;
@@ -78,19 +79,18 @@ body{
 
 /* ===== MENSAJE ===== */
 .card{
-  margin:26px auto 46px;
+  margin:28px auto 52px;
   padding:26px;
   max-width:420px;
   border-radius:24px;
   background:rgba(255,255,255,.15);
   backdrop-filter:blur(14px);
   box-shadow:0 20px 45px rgba(0,0,0,.35);
+  line-height:1.6;
 }
 
 /* ===== 🎂 PASTEL ===== */
-.cake-wrap{
-  margin-bottom:44px;
-}
+.cake-wrap{ margin-bottom:56px; }
 
 .cake{
   width:240px;
@@ -108,7 +108,7 @@ body{
   transform:translateY(120px) scaleY(0);
   animation:build .9s ease forwards;
   box-shadow:
-    0 12px 20px rgba(0,0,0,.35),
+    0 14px 22px rgba(0,0,0,.4),
     inset 0 6px 10px rgba(255,255,255,.35);
 }
 
@@ -117,14 +117,12 @@ body{
   background:linear-gradient(#f472b6,#be185d);
   animation-delay:.2s;
 }
-
 .layer.middle{
   width:200px;
   bottom:54px;
   background:linear-gradient(#f9a8d4,#ec4899);
   animation-delay:.5s;
 }
-
 .layer.top{
   width:170px;
   bottom:108px;
@@ -138,10 +136,7 @@ body{
   left:35px;
   width:170px;
   height:26px;
-  background:linear-gradient(
-    rgba(255,255,255,.6),
-    rgba(255,255,255,.25)
-  );
+  background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.3));
   border-radius:14px;
   transform:scaleX(0);
   animation:icing .6s ease forwards;
@@ -170,13 +165,13 @@ body{
   background:radial-gradient(circle,#ffe066,#ff7a00);
   border-radius:50%;
   animation:flicker 1.3s infinite;
-  box-shadow:0 0 20px rgba(255,170,0,.7);
+  box-shadow:0 0 22px rgba(255,170,0,.8);
 }
 
 /* ===== BOTON ===== */
 button{
   padding:16px 38px;
-  font-size:1.1rem;
+  font-size:1.05rem;
   font-weight:800;
   border:none;
   border-radius:40px;
@@ -186,7 +181,7 @@ button{
   box-shadow:0 12px 30px rgba(0,0,0,.4);
 }
 
-/* ===== 🎈 GLOBOS REALISTAS ===== */
+/* ===== 🎈 GLOBOS ===== */
 .balloon{
   position:fixed;
   bottom:-120px;
@@ -208,7 +203,6 @@ button{
   width:6px;
   height:8px;
   background:inherit;
-  border-radius:0 0 50% 50%;
 }
 
 /* ===== CONFETI ===== */
@@ -219,51 +213,39 @@ button{
   animation:confettiFall 4s linear forwards;
 }
 
+/* ===== MOBILE ULTRA PULIDO ===== */
+@media (max-width:600px){
+  .title{ font-size:2.2rem; }
+  .name{ font-size:2rem; }
+  .card{ margin-bottom:44px; }
+  .cake{ transform:scale(.9); }
+  .character{ font-size:38px; opacity:.8; }
+}
+
 /* ===== ANIMACIONES ===== */
 @keyframes bgMove{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
-
 @keyframes stars{
   from{ transform:translateY(110vh); opacity:1; }
   to{ transform:translateY(-10vh); opacity:0; }
 }
-
-@keyframes float{
-  50%{ transform:translateY(-14px); }
-}
-
-@keyframes build{
-  to{ transform:translateY(0) scaleY(1); }
-}
-
+@keyframes float{ 50%{ transform:translateY(-14px); } }
+@keyframes build{ to{ transform:translateY(0) scaleY(1); } }
 @keyframes icing{ to{ transform:scaleX(1); } }
 @keyframes candle{ to{ transform:translateX(-50%) scaleY(1); } }
 @keyframes flicker{ 50%{ transform:scale(1.2); opacity:.7; } }
-
-@keyframes explode{
-  to{ transform:translate(var(--x),var(--y)); opacity:0; }
-}
-
-@keyframes letterIn{
-  to{ opacity:1; }
-}
-
-@keyframes nameIn{
-  to{ opacity:1; }
-}
-
+@keyframes explode{ to{ transform:translate(var(--x),var(--y)); opacity:0; } }
+@keyframes letterIn{ to{ opacity:1; } }
+@keyframes nameIn{ to{ opacity:1; } }
 @keyframes balloonUp{
   to{
-    transform:
-      translateY(-120vh)
-      translateX(var(--drift));
+    transform:translateY(-120vh) translateX(var(--drift));
     opacity:0;
   }
 }
-
 @keyframes confettiFall{
   to{
     transform:translateY(110vh) rotate(360deg);
@@ -293,11 +275,10 @@ button{
   <div class="name">Giselle</div>
 
   <div class="card">
-    🌸 Hoy celebramos a una niña mágica🌸<br>
-    <br>
-Disfruta cada momento, cada risa y cada sorpresa, porque este día es para celebrar lo maravillosa que eres.<br>
-    <br>
-   💜Te quiero mucho Giselle y espero que te la estes pasando bien y disfrutando de tu día 💜
+    🌸 Hoy celebramos a una niña mágica y muy especial 🌸<br><br>
+    Disfruta cada risa, cada sorpresa y cada momento bonito.
+    Que este nuevo año venga lleno de alegría y sueños cumplidos.<br><br>
+    💜 Te quiero mucho Giselle y espero que te la estes pasando bien y disfrutando de tu día 💜
   </div>
 
   <div class="cake-wrap">
@@ -313,8 +294,11 @@ Disfruta cada momento, cada risa y cada sorpresa, porque este día es para celeb
   <button onclick="celebrar()">🎉 Celebrar 🎉</button>
 </div>
 
+<!-- AUDIO OCULTO -->
+<div id="music"></div>
+
 <script>
-/* TITULO CON FUEGOS */
+/* TITULO */
 const text="Feliz Cumpleaños";
 const title=document.getElementById('title');
 let i=0;
@@ -344,13 +328,24 @@ function fireLetter(){
   i++;
   setTimeout(fireLetter,420);
 }
-
 fireLetter();
 
-/* CELEBRAR: GLOBOS + CONFETI */
+/* CELEBRAR */
+let musicStarted=false;
+
 function celebrar(){
+  if(!musicStarted){
+    document.getElementById('music').innerHTML=`
+    <iframe
+      src="https://www.youtube.com/embed/RE2_joFk-xU?autoplay=1"
+      allow="autoplay"
+      style="position:fixed; width:1px; height:1px; opacity:0; pointer-events:none;">
+    </iframe>`;
+    musicStarted=true;
+  }
+
   // globos
-  for(let i=0;i<22;i++){
+  for(let i=0;i<24;i++){
     const b=document.createElement('div');
     b.className='balloon';
     b.style.left=Math.random()*100+'vw';
