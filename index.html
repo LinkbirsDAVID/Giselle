@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños Giselle 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --purple:#9b59b6;
+  --pink:#ffb6c1;
+}
+
+body{
+  margin:0;
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(180deg,#f3e5f5,#4a148c);
+  color:white;
+  overflow-x:hidden;
+}
+
+.app{
+  min-height:100vh;
+  padding:30px 20px 130px;
+  text-align:center;
+  position:relative;
+}
+
+/* TITULO */
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:2.3rem;
+}
+
+/* NOMBRE ANIMADO */
+.name{
+  display:flex;
+  justify-content:center;
+  margin:10px 0;
+}
+
+.name span{
+  font-size:2.2rem;
+  font-weight:800;
+  color:#fce4ff;
+  animation:letter 1.5s infinite;
+}
+
+.name span:nth-child(n){
+  animation-delay:calc(var(--i) * .15s);
+}
+
+/* EDAD */
+.age{
+  font-size:4.5rem;
+  font-weight:800;
+  animation:pulse 2s infinite;
+}
+
+/* TARJETA */
+.card{
+  background:rgba(255,255,255,.15);
+  border-radius:25px;
+  padding:25px;
+  margin-top:20px;
+  backdrop-filter:blur(10px);
+}
+
+/* BOTON */
+button{
+  margin-top:30px;
+  padding:15px 35px;
+  font-size:1.1rem;
+  font-weight:800;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(45deg,#ff9ff3,#9b59b6);
+  color:white;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* PERSONAJES */
+.character{
+  position:absolute;
+  font-size:48px;
+  animation:float 4s ease-in-out infinite;
+}
+
+.fairy{ top:12%; left:5%; }
+.bear{ bottom:20%; left:5%; animation-delay:1s; }
+.unicorn{ top:15%; right:5%; animation-delay:2s; }
+
+/* CONFETI */
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  animation:confetti 4s linear infinite;
+}
+
+/* CORAZONES */
+.heart{
+  position:fixed;
+  animation:hearts 6s linear infinite;
+}
+
+/* GLOBOS */
+.balloon{
+  position:fixed;
+  bottom:-100px;
+  width:45px;
+  height:60px;
+  border-radius:50%;
+  animation:balloon 10s linear infinite;
+}
+
+/* MUSICA */
+.music{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  display:none;
+}
+
+/* ANIMACIONES */
+@keyframes letter{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+}
+
+@keyframes pulse{
+  50%{ transform:scale(1.1); }
+}
+
+@keyframes float{
+  50%{ transform:translateY(-15px); }
+}
+
+@keyframes hearts{
+  0%{ transform:translateY(110vh); opacity:1; }
+  100%{ transform:translateY(-10vh); opacity:0; }
+}
+
+@keyframes confetti{
+  0%{ transform:translateY(-10vh) rotate(0); }
+  100%{ transform:translateY(110vh) rotate(360deg); }
+}
+
+@keyframes balloon{
+  0%{ transform:translateY(0); opacity:0; }
+  10%{ opacity:1; }
+  100%{ transform:translateY(-120vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- PERSONAJES -->
+  <div class="character fairy">💜</div>
+  <div class="character bear">🧸</div>
+  <div class="character unicorn">🦄</div>
+
+  <h1>¡Feliz Cumpleaños!</h1>
+
+  <!-- NOMBRE -->
+  <div class="name">
+    <span style="--i:1">G</span>
+    <span style="--i:2">i</span>
+    <span style="--i:3">s</span>
+    <span style="--i:4">e</span>
+    <span style="--i:5">l</span>
+    <span style="--i:6">l</span>
+    <span style="--i:7">e</span>
+  </div>
+
+  <div class="age">8</div>
+
+  <div class="card">
+    🌸 Hoy celebramos a una niña maravillosa  
+    Que tus días estén llenos de magia, juegos,  
+    sueños bonitos y muchas sonrisas 💜✨  
+    Nunca dejes de brillar, 
+  </div>
+
+  <button onclick="celebrar()">🎉 Toca para celebrar 🎉</button>
+</div>
+
+<!-- MUSICA -->
+<div class="music" id="music">
+  <iframe width="260" height="150"
+    src="https://www.youtube.com/embed/RE2_joFk-xU?autoplay=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen></iframe>
+</div>
+
+<script>
+function r(min,max){ return Math.random()*(max-min)+min; }
+
+function heart(){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='💜';
+  h.style.left=r(0,100)+'vw';
+  h.style.fontSize=r(16,28)+'px';
+  h.style.animationDuration=r(4,7)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+
+function confetti(){
+  const c=document.createElement('div');
+  c.className='confetti';
+  c.style.left=r(0,100)+'vw';
+  c.style.background=['#ffb6c1','#d980fa','#f6e58d'][Math.floor(Math.random()*3)];
+  c.style.animationDuration=r(3,5)+'s';
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+}
+
+function balloon(){
+  const b=document.createElement('div');
+  b.className='balloon';
+  b.style.left=r(0,100)+'vw';
+  b.style.background=['#9b59b6','#ffb6c1','#dcd6f7'][Math.floor(Math.random()*3)];
+  b.style.animationDuration=r(8,12)+'s';
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),12000);
+}
+
+function celebrar(){
+  document.getElementById('music').style.display='block';
+  for(let i=0;i<50;i++){
+    setTimeout(confetti,i*70);
+    setTimeout(heart,i*100);
+    setTimeout(balloon,i*150);
+  }
+}
+
+setInterval(heart,900);
+</script>
+
+</body>
+</html>
